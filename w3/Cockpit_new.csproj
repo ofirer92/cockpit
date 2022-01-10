@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\NUnit.3.13.2\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props')" />
+  <Import Project="..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{112FD7D4-333F-4D18-92F4-E7D0D60D9C58}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cockpit_new</RootNamespace>
+    <AssemblyName>cockpit_new</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExtentReports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtentReports.5.0.0-alpha6\lib\netstandard2.0\ExtentReports.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Html.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Html.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Html.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Razor, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Razor.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Razor.Language, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Razor.Language.2.2.0\lib\net46\Microsoft.AspNetCore.Razor.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Razor.Runtime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Razor.Runtime.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Razor.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=3.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.3.9.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=3.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.3.9.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.2\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine.NetCore, Version=0.0.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.NetCore.nixFix.1.0.1\lib\netstandard2.0\RazorEngine.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.5.0.0\lib\net472\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.5.0.0\lib\net461\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseFolder\BaseClass.cs" />
+    <Compile Include="ElementsFolder\cockpitAdmin.cs" />
+    <Compile Include="ElementsFolder\IwebElements.cs" />
+    <Compile Include="ElementsFolder\kpiDataElements.cs" />
+    <Compile Include="ElementsFolder\kpiSettingsElements.cs" />
+    <Compile Include="ElementsFolder\LoginPage_Elements.cs" />
+    <Compile Include="ElementsFolder\mainPage_elements.cs" />
+    <Compile Include="ElementsFolder\timeFrameElements.cs" />
+    <Compile Include="ElementsFolder\userSettingsElements.cs" />
+    <Compile Include="kpi.cs" />
+    <Compile Include="TestFolder\kpiSettings.cs" />
+    <Compile Include="TestFolder\LoaginPage.cs" />
+    <Compile Include="TestFolder\MainPage.cs" />
+    <Compile Include="TestFolder\Per Kpi\KPIs_t.cs" />
+    <Compile Include="TestFolder\timeFrame.cs" />
+    <Compile Include="TestFolder\userSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Reports\version 5.71.6\by month" />
+    <None Include="Reports\version 5.71.6\By Quarter" />
+    <None Include="Reports\version 5.71.6\kpi" />
+    <None Include="Reports\version 5.71.6\kpi values" />
+    <None Include="Reports\version 5.71.6\timeframe" />
+    <None Include="Reports\version 5.71.6\User Info" />
+    <None Include="Reports\version 5.71.6\View By Period" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\ terms and conditions link4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\accept terms and conditions3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\Forgot password5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\Forgot password6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\Report.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\wrong password2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 0.0.8\wrong username1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\dsa1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\KG and LB datas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\KG and LB datas31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\KG units29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\Lang check28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\LB units30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\Report.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\seasons 132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.70.14\set data AVGDIM 11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ terms and conditions link17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\54.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\55.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\56.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\57.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\59.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\62.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\63.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\65.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\66.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\67.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\68.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\69.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\73.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\74.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\76.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\77.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\78.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\79.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\accept terms and conditions16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\assert all info titles arte same as kpi titles10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\default values12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\disable kpis via main screen8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\disable kpis via main screen9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\Forgot password18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\Forgot password19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\KG and LB datas84.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\KG units82.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\Lang check81.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\LB units83.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\max and min values11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\Report.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\seasons 185.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\threasholds13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\ToolBar links25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\wrong password15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reports\version 5.71.6\wrong username14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.2\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.97.0.4692.7100\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.97.0.4692.7100\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.97.0.4692.7100\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.97.0.4692.7100\build\Selenium.WebDriver.ChromeDriver.targets')" />
+</Project>
