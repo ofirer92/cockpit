@@ -136,6 +136,21 @@ namespace WebApps.ElementsFolder
 
             }
         }
+             
+        private void getDropDownList2()
+        {
+            IList<IWebElement> c = driver.FindElements(By.ClassName("dropdown-toggle"));
+            shownDropdown = new List<IWebElement>();
+            foreach (IWebElement elements in c)
+            {
+
+                if (elements.Enabled)
+                {
+                    shownDropdown.Add(elements);
+                }
+
+            }
+        }
 
         public void nextMonth()
         {
@@ -272,6 +287,19 @@ namespace WebApps.ElementsFolder
             tryToclick(byMonthToYear, ToYear);
             apply();
 
+        }
+
+        //to test 11
+        public void setSingleMonth(int month, int year)
+        {
+            openTimeFrame();
+            radios[0].Click();
+            month_1.Click();
+            getDropDownList();
+            shownDropdown[month].Click();
+            year_1.Click();
+            getDropDownList();
+            shownDropdown[year].Click();
         }
     }
 }

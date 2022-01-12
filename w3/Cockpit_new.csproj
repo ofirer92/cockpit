@@ -145,7 +145,6 @@
   <ItemGroup>
     <Compile Include="BaseFolder\BaseClass.cs" />
     <Compile Include="ElementsFolder\cockpitAdmin.cs" />
-    <Compile Include="ElementsFolder\IwebElements.cs" />
     <Compile Include="ElementsFolder\kpiDataElements.cs" />
     <Compile Include="ElementsFolder\kpiSettingsElements.cs" />
     <Compile Include="ElementsFolder\LoginPage_Elements.cs" />

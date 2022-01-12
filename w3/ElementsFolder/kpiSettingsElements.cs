@@ -183,6 +183,7 @@ namespace WebApps.ElementsFolder
             foreach (IWebElement item in hiddenKPIS)
             {
                 element_clickable(item);
+                Thread.Sleep(1000);
                 item.Click();
             }
             apply();

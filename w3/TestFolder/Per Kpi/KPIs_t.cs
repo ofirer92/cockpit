@@ -109,7 +109,8 @@ namespace WebApps.TestFolder
             kpis.hideSection(2);
             Assert.IsTrue(kpis.titles.Count.Equals(0));
 
-
+            kpis.openRebbons();
+            kpis.showAllKpis();
 
 
         }

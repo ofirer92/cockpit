@@ -11,7 +11,9 @@ namespace WebApps.TestFolder
     class timeFrame: BaseClass
     {
         timeFrameElements timeframe;
-        public int minYear = 2016;
+        static int currentYear = 2022;
+        public int minYear = currentYear-5;
+        
         [SetUp]
         public void setup()
         {
@@ -22,13 +24,13 @@ namespace WebApps.TestFolder
 
 
         [Test]
-        [Description("by month: set by single month (January 2020)")]
+        [Description("by month: set by single month (January 2022)")]
         public void test1() 
         {
             timeframe.openTimeFrame();
             timeframe.setTimeFrameType(0);
             timeframe.SetByMonthJan20();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2020 - January 2020"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {currentYear-1} - January {currentYear-1}"));
         }
 
         [Test]
@@ -39,14 +41,14 @@ namespace WebApps.TestFolder
             logger("current month: "+ timeframe.currentDate.Text);
 
             timeframe.nextMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("February 2020 - February 2020"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"February {currentYear - 1} - February {currentYear - 1}"));
             logger("current month: " + timeframe.currentDate.Text);
             timeframe.nextMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("March 2020 - March 2020"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"March {currentYear-1} - March {currentYear-1}"));
             logger("current month: " + timeframe.currentDate.Text);
 
             timeframe.prevMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("February 2020 - February 2020"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"February {currentYear - 1} - February {currentYear - 1}"));
             logger("current month: " + timeframe.currentDate.Text);
         }
         
@@ -56,7 +58,7 @@ namespace WebApps.TestFolder
         {
             
             timeframe.SetByMonthJan20();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2020 - January 2020"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {currentYear - 1} - January {currentYear - 1}"));
 
             for (int i = 0; i <= 5; i++)
             {
@@ -80,22 +82,22 @@ namespace WebApps.TestFolder
             timeframe.setByQ();
 
             timeframe.setQ(0);
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2016 - March 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {minYear} - March {minYear}"));
 
             timeframe.setQ(1);
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("April 2016 - June 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"April {minYear} - June {minYear}"));
 
             timeframe.setQ(2);
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("July 2016 - September 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"July {minYear} - September {minYear}"));
 
             timeframe.setQ(3);
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("October 2016 - December 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"October {minYear} - December {minYear}"));
 
             timeframe.nextMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2017 - March 2017"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {minYear+1} - March {minYear+1}"));
 
             timeframe.prevMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("October 2016 - December 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"October {minYear} - December {minYear}"));
         }
 
         [Test]
@@ -103,17 +105,17 @@ namespace WebApps.TestFolder
         public void test5()
         {
             timeframe.setBySingleMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2017 - January 2017"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {minYear+1} - January {minYear+1}"));
 
             timeframe.nextMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("February 2017 - February 2017"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"February {minYear+1} - February {minYear+1}"));
             
             timeframe.nextMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("March 2017 - March 2017"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"March {minYear+1} - March {minYear+1}"));
 
             timeframe.setBySingleMonth();
             timeframe.prevMonth();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("December 2016 - December 2016"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"December {minYear} - December {minYear}"));
         }
 
         [Test]
@@ -153,7 +155,7 @@ namespace WebApps.TestFolder
         {
             timeframe.setValuesToPeriod(0, 1, 3, 2);
             timeframe.cancelButSave();
-            Assert.IsTrue(timeframe.currentDate.Text.Equals("January 2017 - April 2018"));
+            Assert.IsTrue(timeframe.currentDate.Text.Equals($"January {minYear+1} - April {minYear+2}"));
         }
 
         //TBD add seasons tests!!!!
